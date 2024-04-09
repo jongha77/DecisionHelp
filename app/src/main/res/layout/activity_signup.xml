@@ -5,71 +5,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".MainActivity">
+    tools:context=".SignupActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="280dp"
-        android:layout_height="150dp"
-        android:src="@drawable/maintext"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <TextView
+        android:id="@+id/idCheckText"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.079" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/idText"
         android:layout_width="300dp"
         android:layout_height="70dp"
+        android:layout_marginTop="172dp"
         android:background="@drawable/textbox"
         android:hint="아이디를 입력하세요"
-        app:layout_constraintBottom_toTopOf="@+id/passwordText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.611" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/passwordText"
         android:layout_width="300dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/textbox"
         android:hint="비밀번호를 입력하세요"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+        app:layout_constraintBottom_toTopOf="@+id/passwordToText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idText"
+        app:layout_constraintVertical_bias="0.648" />
+
+    <TextView
+        android:id="@+id/passwordCheckText"
+        android:layout_width="306dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="376dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/passwordToText"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/textbox"
+        android:hint="비밀번호를 한번 더 입력하세요"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/signupBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:background="@drawable/buttonbox"
-        android:text="로그인"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.62" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:src="@drawable/grouptext"
-        app:layout_constraintBottom_toTopOf="@+id/signupBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
-        app:layout_constraintVertical_bias="0.428" />
 
     <Button
         android:id="@+id/signupBtn"
@@ -84,6 +83,6 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88" />
+        app:layout_constraintVertical_bias="0.868" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

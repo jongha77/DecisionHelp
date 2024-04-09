@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyTimePickerStyle" parent="Widget.MaterialComponents.TimePicker">
+        <item name="android:textColor">#FF0000</item> <!-- Change the color code as per your preference -->
+    </style>
+</resources>

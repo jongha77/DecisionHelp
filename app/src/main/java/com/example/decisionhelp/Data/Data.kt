@@ -6,3 +6,18 @@ data class SignupRequest(
 )
 
 data class IdCheckRequest(val id: String)
+
+data class LoginRequest(
+    val id: String,
+    val password: String
+)
+
+data class VoterRequest(
+    val voterCode: String,
+    val voterTitle: String,
+    val voterDetail: String,
+    val voterDate: String,
+    val voterTime: String,
+    val voterWhether: Boolean,
+    val id: String,
+)

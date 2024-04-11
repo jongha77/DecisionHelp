@@ -41,7 +41,15 @@ android {
 
 dependencies {
 
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation("io.insert-koin:koin-core:3.2.0")
+    implementation ("io.insert-koin:koin-android:3.2.0")
+    implementation ("io.insert-koin:koin-android-compat:3.2.0")
+    implementation ("io.insert-koin:koin-androidx-workmanager:3.2.0")
     implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1" )
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

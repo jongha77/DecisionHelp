@@ -1,11 +1,12 @@
-package com.example.decisionhelp
+package com.example.decisionhelp.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.decisionhelp.R
 
-class SignupActivity : AppCompatActivity() {
+class VoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signup)
+        setContentView(R.layout.activity_vote)
     }
 }

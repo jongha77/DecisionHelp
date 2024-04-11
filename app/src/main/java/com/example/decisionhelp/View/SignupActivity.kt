@@ -46,7 +46,7 @@ class SignupActivity : AppCompatActivity() {
                 Toast.makeText(this, "회원가입 성공!", Toast.LENGTH_SHORT).show()
                 // Handle successful signup, navigate to next screen etc.
             } else {
-                Toast.makeText(this, "S회원가입 실패ㅠ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "회원가입 실패ㅠ", Toast.LENGTH_SHORT).show()
                 // Handle failed signup
             }
         })

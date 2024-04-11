@@ -18,7 +18,7 @@
             android:id="@+id/titleText"
             android:layout_width="280dp"
             android:layout_height="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="80dp"
             android:text="제목"
             android:textColor="@color/white"
             android:textSize="25dp"
@@ -36,7 +36,7 @@
             android:layout_height="63dp"
             android:layout_marginBottom="24dp"
             android:background="@color/white"
-            android:text="제목을 입력하세요"
+            android:hint="제목을 입력하세요"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/detailText"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,10 +53,10 @@
             android:textSize="25dp"
             app:layout_constraintBottom_toTopOf="@+id/detail"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.343"
+            app:layout_constraintHorizontal_bias="0.34"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <EditText
             android:id="@+id/detail"
@@ -64,7 +64,7 @@
             android:layout_height="63dp"
             android:layout_marginBottom="24dp"
             android:background="@color/white"
-            android:text="내용을 입력하세요"
+            android:hint="내용을 입력하세요"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/timerText"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,7 @@
 package com.example.decisionhelp.Network
 
 import com.example.decisionhelp.Model.UserViewModel
+import com.example.decisionhelp.Model.VoterViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -14,6 +15,7 @@ object NetworkModule {
         single { provideApiService(get()) }
         single { UserRepository(get()) }
         viewModel { UserViewModel(get()) }
+        viewModel { VoterViewModel(get()) }
     }
     private fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()

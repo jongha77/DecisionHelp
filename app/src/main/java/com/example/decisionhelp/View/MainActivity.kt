@@ -1,5 +1,6 @@
 package com.example.decisionhelp.View
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,11 +33,24 @@ class MainActivity : AppCompatActivity() {
         viewModel.loginResult.observe(this, Observer { success ->
             if (success) {
                 Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
-                intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
+                saveUserId(binding.idText.text.toString()) // Save user ID after successful login
+                navigateToHome()
             } else {
                 Toast.makeText(this, "로그인 실패ㅠ", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun navigateToHome() {
+        intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish() // Finish current activity to prevent user from coming back to login screen using back button
+    }
+
+    private fun saveUserId(userId: String) {
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("userId", userId)
+        editor.apply()
     }
 }

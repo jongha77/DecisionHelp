@@ -4,6 +4,7 @@ import com.example.decisionhelp.Data.IdCheckRequest
 import com.example.decisionhelp.Data.LoginRequest
 import com.example.decisionhelp.Data.SignupRequest
 import com.example.decisionhelp.Data.VoterRequest
+import com.example.decisionhelp.Data.VoterThemeRequest
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -20,4 +21,7 @@ interface ApiService {
 
     @POST("/voter")
     suspend fun voter(@Body requestBody: VoterRequest): Response<Unit>
+
+    @POST("/voterTheme")
+    suspend fun voterTheme(@Body requestBody: VoterThemeRequest): Response<String>
 }

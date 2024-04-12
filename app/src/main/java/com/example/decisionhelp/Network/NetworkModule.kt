@@ -14,6 +14,7 @@ object NetworkModule {
         single { provideRetrofit() }
         single { provideApiService(get()) }
         single { UserRepository(get()) }
+        single { VoterRepository(get()) }
         viewModel { UserViewModel(get()) }
         viewModel { VoterViewModel(get()) }
     }

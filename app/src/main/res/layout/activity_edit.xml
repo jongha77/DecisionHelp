@@ -87,6 +87,8 @@
             android:layout_width="330dp"
             android:layout_height="50dp"
             android:background="@drawable/calendarbtn"
+            android:textSize="30dp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/TimerBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.555"
@@ -98,6 +100,8 @@
             android:layout_width="330dp"
             android:layout_height="50dp"
             android:layout_marginBottom="24dp"
+            android:textColor="@color/black"
+            android:textSize="30dp"
             android:background="@drawable/timerbtn"
             app:layout_constraintBottom_toTopOf="@+id/duplicationText"
             app:layout_constraintEnd_toEndOf="parent"
@@ -128,6 +132,16 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <RadioButton
+                android:id="@+id/rg_btn1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="중복 허용"
+                android:textColor="@color/white"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="352dp" />
+
+            <RadioButton
                 android:id="@+id/rg_btn2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -137,15 +151,6 @@
                 tools:layout_editor_absoluteX="224dp"
                 tools:layout_editor_absoluteY="364dp" />
 
-            <RadioButton
-                android:id="@+id/rg_btn1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="중복 허용"
-                android:textColor="@color/white"
-                tools:layout_editor_absoluteX="34dp"
-                tools:layout_editor_absoluteY="352dp" />
         </RadioGroup>
 
         <androidx.recyclerview.widget.RecyclerView

@@ -21,3 +21,10 @@ data class VoterRequest(
     val voterWhether: Boolean,
     val id: String,
 )
+
+data class VoterThemeRequest(
+    val voterCode: String,
+    val voterItemDetail: String
+)
+
+

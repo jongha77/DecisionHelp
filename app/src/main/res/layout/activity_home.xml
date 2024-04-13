@@ -7,39 +7,48 @@
     android:background="@color/black"
     tools:context=".View.HomeActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:src="@drawable/maintext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
+
     <Button
         android:id="@+id/EditBtn"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="148dp"
         android:background="@drawable/edit"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/MyPageBtn"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="148dp"
         android:background="@drawable/setting"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintHorizontal_bias="0.627"
         app:layout_constraintStart_toEndOf="@+id/EditBtn"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="410dp"
-        android:layout_height="579dp"
+        android:layout_width="413dp"
+        android:layout_height="559dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditBtn"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_home_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

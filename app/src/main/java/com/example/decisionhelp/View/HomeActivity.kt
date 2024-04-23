@@ -13,6 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeActivity : AppCompatActivity(){
     private lateinit var binding: ActivityHomeBinding
     private val viewModel: VoterViewModel by viewModel()
+    var isEx: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +22,9 @@ class HomeActivity : AppCompatActivity(){
 
         // Initialize RecyclerView and adapter
         val adapter = VoterAdapter(emptyList(), object : VoterAdapter.OnItemClickListener {
-            override fun onItemClick(voter: Voter) {
+            override fun onItemClick(voter: Voter, isExpired: Boolean) {
                 viewModel.setSelectedVoter(voter)
+                isEx = isExpired
             }
         })
         binding.recyclerView.adapter = adapter
@@ -37,6 +39,7 @@ class HomeActivity : AppCompatActivity(){
             selectedVoter?.let {
                 val intent = Intent(this, VoteActivity::class.java).apply {
                     putExtra("SELECTED_VOTER", selectedVoter)
+                    putExtra("IS_EXPIRED", isEx)
                 }
                 startActivity(intent)
                 viewModel.setSelectedVoter(null) // Reset selected voter after starting activity

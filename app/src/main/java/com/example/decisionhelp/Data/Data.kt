@@ -39,6 +39,47 @@ data class Voter(
     val voterTime: String,
     val voterWhether: Int,
     val id: String,
+    var isExpired: Boolean = true
 ) : Parcelable
+
+data class VoterItem(
+    val voterItemCode: Int,
+    val voterCode: String,
+    val voterItemDetail: String,
+    var count: Int,
+    var isChecked: Boolean // isChecked 속성 추가
+)
+
+
+data class VoterResult(
+    val voterItemCode: Int,
+    val id: String,
+    var count: Int,
+    var result: Boolean
+)
+
+data class itemResultRequest(
+    val voterItemCode: Int,
+    val id: String,
+    var result: Boolean
+)
+
+data class voterCountRequest(
+    val voterItemCode: Int,
+    var count: Int
+)
+
+data class itemResultCheck(
+    val voterItemCode: Int,
+    var result: Int
+)
+
+data class voterClosedRequest(
+    val voterCode: String,
+    val voterDate: String,
+    val voterTime: String
+)
+
+
 
 

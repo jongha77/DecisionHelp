@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- checkbox_gray.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- When the checkbox is checked -->
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/darker_gray" /> <!-- Change to the desired gray color -->
+            <corners android:radius="4dp" /> <!-- Optional: Rounded corners -->
+        </shape>
+    </item>
+    <!-- When the checkbox is unchecked -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/darker_gray" /> <!-- Change to the same gray color -->
+            <corners android:radius="4dp" /> <!-- Optional: Rounded corners -->
+        </shape>
+    </item>
+</selector>

@@ -27,8 +27,12 @@ class VoterViewModel(private val voterRepository: VoterRepository) : ViewModel()
 
     private val _voterCount = MutableLiveData<Boolean>()
 
+    private val _itemResultCheck = MutableLiveData<List<itemResultCheck>>()
+    val itemResultCheck: LiveData<List<itemResultCheck>>
+        get() = _itemResultCheck
+
     private val _voters = MutableLiveData<List<Voter>>()
-    val voters: LiveData<List<Voter>>
+    val voters: MutableLiveData<List<Voter>>
         get() = _voters
 
     private val _selectedVoter = MutableLiveData<Voter?>(null)
@@ -39,16 +43,15 @@ class VoterViewModel(private val voterRepository: VoterRepository) : ViewModel()
     val votersItem: LiveData<List<VoterItem>>
         get() = _voterItem
 
-    private val _itemResultCheck = MutableLiveData<List<itemResultCheck>>()
-    val itemResultCheck: LiveData<List<itemResultCheck>>
-        get() = _itemResultCheck
 
     private val _voterClosed = MutableLiveData<Boolean>()
 
     fun setSelectedVoter(voter: Voter?) {
         _selectedVoter.value = voter
     }
-
+    fun resetVoters() {
+        _voters.value = null
+    }
     fun voter(voterCode: String, voterTitle: String, voterDetail: String,
               voterDate: String, voterTime: String, voterWhether: Boolean, id: String) {
         viewModelScope.launch {
@@ -89,10 +92,10 @@ class VoterViewModel(private val voterRepository: VoterRepository) : ViewModel()
         }
     }
 
-    fun itemResult(voterItemCode: Int, id: String, result: Boolean) {
+    fun itemResult(voterCode: String,voterItemCode: Int, id: String, result: Boolean) {
         viewModelScope.launch {
             val response = voterRepository.itemResult(
-                itemResultRequest(voterItemCode, id, result)
+                itemResultRequest(voterCode,voterItemCode, id, result)
             )
             _itemResult.value = response.isSuccessful
         }

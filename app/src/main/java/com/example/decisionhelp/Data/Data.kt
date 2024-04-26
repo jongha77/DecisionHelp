@@ -52,6 +52,7 @@ data class VoterItem(
 
 
 data class VoterResult(
+    val voterCode: String,
     val voterItemCode: Int,
     val id: String,
     var count: Int,
@@ -59,6 +60,7 @@ data class VoterResult(
 )
 
 data class itemResultRequest(
+    val voterCode: String,
     val voterItemCode: Int,
     val id: String,
     var result: Boolean
@@ -70,7 +72,9 @@ data class voterCountRequest(
 )
 
 data class itemResultCheck(
+    val VoterCode: String,
     val voterItemCode: Int,
+    val id: String,
     var result: Int
 )
 
@@ -79,7 +83,6 @@ data class voterClosedRequest(
     val voterDate: String,
     val voterTime: String
 )
-
 
 
 

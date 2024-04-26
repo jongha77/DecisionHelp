@@ -3,7 +3,6 @@ package com.example.decisionhelp.View
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -83,7 +82,7 @@ class VoteActivity : AppCompatActivity() {
             binding.completeBtn.setOnClickListener() {
                 val voterResults = itemAdapter.voterResults
                 for (result in voterResults) {
-                    viewModel.itemResult(result.voterItemCode, result.id, result.result)
+                    viewModel.itemResult(result.voterCode,result.voterItemCode, result.id, result.result)
                     viewModel.voterCount(result.voterItemCode, result.count)
                 }
                 Toast.makeText(this, "투표 완료!", Toast.LENGTH_SHORT).show()

@@ -29,7 +29,6 @@ class HomeActivity : AppCompatActivity(){
         })
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-
         // Observe the list of voters
         viewModel.voters.observe(this, { voters ->
             adapter.updateData(voters)
@@ -48,7 +47,6 @@ class HomeActivity : AppCompatActivity(){
 
         // Fetch the list of voters
         viewModel.getVoters()
-
         // Handle button clicks
         binding.EditBtn.setOnClickListener {
             val intent = Intent(this, EditActivity::class.java)
@@ -56,7 +54,7 @@ class HomeActivity : AppCompatActivity(){
         }
 
         binding.MyPageBtn.setOnClickListener {
-            val intent = Intent(this, EditActivity::class.java)
+            val intent = Intent(this, MypageActivity::class.java)
             startActivity(intent)
         }
     }

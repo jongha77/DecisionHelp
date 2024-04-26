@@ -19,7 +19,7 @@ class ItemAdapter : ListAdapter<VoterItem, ItemAdapter.VoterViewHolder>(VoterDif
     var id: String = ""
     var voterResults: MutableList<VoterResult> = mutableListOf()
     var itemResultCheck: MutableList<itemResultCheck> = mutableListOf()
-
+    private var voterCode: String = ""
     // Variable to control whether the click listener is enabled or disabled
     private var isClickListenerEnabled: Boolean = true
 
@@ -44,7 +44,6 @@ class ItemAdapter : ListAdapter<VoterItem, ItemAdapter.VoterViewHolder>(VoterDif
         private val voterItemCountTextView: TextView = itemView.findViewById(R.id.itemCount)
         private val checkBox: CheckBox = itemView.findViewById(R.id.checkbox)
         private var voterItemCode: Int = 0
-
         private var currentItem: VoterItem? = null
 
         init {
@@ -84,7 +83,7 @@ class ItemAdapter : ListAdapter<VoterItem, ItemAdapter.VoterViewHolder>(VoterDif
                             existingResult.count = item.count
                             existingResult.result = item.isChecked
                         } else {
-                            voterResults.add(VoterResult(item.voterItemCode, id, item.count, item.isChecked))
+                            voterResults.add(VoterResult(voterCode,item.voterItemCode, id, item.count, item.isChecked))
                         }
                     }
                 }
@@ -96,7 +95,7 @@ class ItemAdapter : ListAdapter<VoterItem, ItemAdapter.VoterViewHolder>(VoterDif
             voterItemDetailTextView.text = voterItem.voterItemDetail
             voterItemCountTextView.text = voterItem.count.toString()
             voterItemCode = voterItem.voterItemCode
-
+            voterCode = voterItem.voterCode
             // Set checkbox state
             itemResultCheck.forEach { result ->
                 if (voterItem.voterItemCode == result.voterItemCode) {

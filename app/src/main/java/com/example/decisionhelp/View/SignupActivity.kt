@@ -1,5 +1,6 @@
 package com.example.decisionhelp.View
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
@@ -44,7 +45,9 @@ class SignupActivity : AppCompatActivity() {
         viewModel.signupResult.observe(this, Observer { success ->
             if (success) {
                 Toast.makeText(this, "회원가입 성공!", Toast.LENGTH_SHORT).show()
-                // Handle successful signup, navigate to next screen etc.
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish() // Close the current activity
             } else {
                 Toast.makeText(this, "회원가입 실패ㅠ", Toast.LENGTH_SHORT).show()
                 // Handle failed signup

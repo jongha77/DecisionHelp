@@ -53,13 +53,14 @@ class EditActivity : AppCompatActivity(), EditAdapter.ItemChangeListener {
             Checked = isChecked
         }
 
-        binding.CalendarBtn.text = SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().time)
+        binding.CalendarBtn.text = SimpleDateFormat("yyyy-M-dd").format(Calendar.getInstance().time)
         binding.TimerBtn.text = SimpleDateFormat("HH:mm").format(Calendar.getInstance().time)
 
         binding.CalendarBtn.setOnClickListener {
             val datePickerDialog = DatePickerDialog(this, { _, year, month, day ->
-                binding.CalendarBtn.text =
-                    year.toString() + "/" + (month + 1).toString() + "/" + day.toString()
+                val formattedMonth = if (month + 1 < 10) "0${month + 1}" else "${month + 1}"
+                val formattedDay = if (day < 10) "0$day" else "$day"
+                binding.CalendarBtn.text = "$year-$formattedMonth-$formattedDay"
             }, year, month, day)
             datePickerDialog.show()
         }

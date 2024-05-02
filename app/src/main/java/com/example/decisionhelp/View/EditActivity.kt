@@ -53,7 +53,7 @@ class EditActivity : AppCompatActivity(), EditAdapter.ItemChangeListener {
             Checked = isChecked
         }
 
-        binding.CalendarBtn.text = SimpleDateFormat("yyyy-M-dd").format(Calendar.getInstance().time)
+        binding.CalendarBtn.text = SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().time)
         binding.TimerBtn.text = SimpleDateFormat("HH:mm").format(Calendar.getInstance().time)
 
         binding.CalendarBtn.setOnClickListener {

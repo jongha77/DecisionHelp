@@ -56,7 +56,7 @@ interface ApiService {
 
     // 사용자가 무슨 항목에 투표했는지를 가져옴
     @GET("/itemresultcheck")
-    suspend fun itemResultCheck(@Query("id") id: String): Response<List<itemResultCheck>>
+    suspend fun itemResultCheck(@Query("id") id: String,voterCode: String): Response<List<itemResultCheck>>
 
     // 투표를 게시한 사용자가 투표마감을 하기 위한 서버
     @POST("/voterclosed")

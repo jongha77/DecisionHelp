@@ -2,8 +2,10 @@ package com.example.decisionhelp.View
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,12 +22,13 @@ class VoteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVoteBinding
     private val viewModel: VoterViewModel by viewModel()
     private lateinit var itemAdapter: ItemAdapter
-    private var isExpired: Boolean = false
+    private var deadline: Boolean = false
     private var voterCode: String = ""
     private var Date: String =""
     private var Time: String =""
     private var id: String =""
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVoteBinding.inflate(layoutInflater)
@@ -34,7 +37,7 @@ class VoteActivity : AppCompatActivity() {
         initRecyclerView()
 
         val selectedVoter = intent.getParcelableExtra<Voter>("SELECTED_VOTER")
-        isExpired = intent.getBooleanExtra("IS_EXPIRED", false)
+        deadline = intent.getBooleanExtra("deadline", false)
 
         if (selectedVoter != null) {
             val voterTitle = selectedVoter.voterTitle
@@ -45,7 +48,7 @@ class VoteActivity : AppCompatActivity() {
             id = selectedVoter.id
             binding.titleText.text = voterTitle
             binding.detailText.text = voterDetail
-            itemAdapter.number = selectedVoter.voterWhether
+            itemAdapter.voterWhether = selectedVoter.voterWhether
             itemAdapter.id = getUserId().toString()
         }
         viewModel.votersItem.observe(this, Observer { voterItems ->
@@ -57,18 +60,18 @@ class VoteActivity : AppCompatActivity() {
         })
 
         viewModel.getVoterItems(voterCode)
-        viewModel.itemResultCheck(getUserId().toString())
+        viewModel.itemResultCheck(getUserId().toString(),voterCode)
 
 
         if(id == itemAdapter.id){
-            binding.completeBtn.text = "투표마감"
+            binding.completeBtn.text = "투표 마감"
             itemAdapter.setClickListenerEnabled(false)
             binding.completeBtn.text = "마감 하기"
 
             binding.completeBtn.setOnClickListener(){
-                val currentDateAndTime = LocalDateTime.now() // Obtain current date and time
-                val date = currentDateAndTime.toLocalDate().toString() // Convert to string format
-                val time = currentDateAndTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm")) // Format time to "HH:mm"
+                val currentDateAndTime = LocalDateTime.now()
+                val date = currentDateAndTime.toLocalDate().toString()
+                val time = currentDateAndTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"))
                 viewModel.voterClosed(voterCode,date,time)
                 Toast.makeText(this, "마감 되었습니다.", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, HomeActivity::class.java)
@@ -104,6 +107,7 @@ class VoteActivity : AppCompatActivity() {
         return sharedPreferences.getString("userId", null)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun convertToDateTime(dateString: String, timeString: String): LocalDateTime {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm") // Adjust pattern as per your date/time format
         val dateTimeString = "$dateString $timeString"
@@ -111,6 +115,7 @@ class VoteActivity : AppCompatActivity() {
     }
 
     // Function to check if savedDateTime has passed compared to current time
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun hasPassed(savedDateTime: LocalDateTime): Boolean {
         val currentDateTime = LocalDateTime.now()
         return currentDateTime.isAfter(savedDateTime)

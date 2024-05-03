@@ -26,8 +26,8 @@ class EditActivity : AppCompatActivity(), EditAdapter.ItemChangeListener {
     private var year = calendar.get(Calendar.YEAR)
     private var month = calendar.get(Calendar.MONTH)
     private var day = calendar.get(Calendar.DAY_OF_MONTH)
-    private lateinit var adapter: EditAdapter // YourAdapter는 RecyclerView.Adapter를 상속받는 클래스여야 합니다.
-    private var itemList: MutableList<String> = mutableListOf() // 아이템이 문자열인 경우 문자열 리스트를 사용합니다.
+    private lateinit var adapter: EditAdapter
+    private var itemList: MutableList<String> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditBinding.inflate(layoutInflater)
@@ -89,10 +89,13 @@ class EditActivity : AppCompatActivity(), EditAdapter.ItemChangeListener {
             val encodedString = Base64.encodeToString(combinedString.toByteArray(), Base64.DEFAULT)
             val voterCode = encodedString
 
-            viewModel.voter(voterCode, voterTitle, voterDetail, voterDate, voterTime, voterWhether, id)
-            itemList.forEachIndexed { index, item ->
-                viewModel.voterTheme(voterCode, item)
-            }
+            if(voterTitle != "" || voterDetail != "" || itemList.size >= 2) {
+                viewModel.voter(voterCode, voterTitle, voterDetail, voterDate, voterTime, voterWhether, id)
+                itemList.forEachIndexed { index, item ->
+                    viewModel.voterTheme(voterCode, item) }
+            }else
+                Toast.makeText(this, "투표 게시 실패ㅠ", Toast.LENGTH_SHORT).show()
+
         }
 
         viewModel.voterResult.observe(this, Observer { success ->
@@ -100,8 +103,6 @@ class EditActivity : AppCompatActivity(), EditAdapter.ItemChangeListener {
                 Toast.makeText(this, "투표 게시 성공!", Toast.LENGTH_SHORT).show()
                 intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
-            } else {
-                Toast.makeText(this, "투표 게시 실패ㅠ", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -112,18 +113,12 @@ class EditActivity : AppCompatActivity(), EditAdapter.ItemChangeListener {
     }
 
     override fun onItemChanged(updatedItemList: MutableList<String>) {
-        // Handle the updated itemList here
-        // You can update any other views or perform any other actions based on the updated itemList
         itemList = updatedItemList
     }
 
     private fun addItemToList() {
-        // 새로운 아이템을 리스트에 추가
-        val newItem = "" // 아이템이 문자열인 경우 새로운 문자열을 생성합니다.
+        val newItem = ""
         itemList.add(newItem)
-
-        // 어댑터에 데이터 변경 알림
         adapter.notifyItemInserted(itemList.size - 1)
     }
-
 }

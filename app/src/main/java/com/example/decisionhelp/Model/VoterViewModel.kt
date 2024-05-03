@@ -49,9 +49,6 @@ class VoterViewModel(private val voterRepository: VoterRepository) : ViewModel()
     fun setSelectedVoter(voter: Voter?) {
         _selectedVoter.value = voter
     }
-    fun resetVoters() {
-        _voters.value = null
-    }
     fun voter(voterCode: String, voterTitle: String, voterDetail: String,
               voterDate: String, voterTime: String, voterWhether: Boolean, id: String) {
         viewModelScope.launch {
@@ -110,9 +107,9 @@ class VoterViewModel(private val voterRepository: VoterRepository) : ViewModel()
         }
     }
 
-    fun itemResultCheck(id: String) {
+    fun itemResultCheck(id: String,voterCode: String) {
         viewModelScope.launch {
-            val response = voterRepository.itemResultCheck(id)
+            val response = voterRepository.itemResultCheck(id,voterCode)
             if (response.isSuccessful) {
                 _itemResultCheck.value = response.body()
             } else {

@@ -50,7 +50,6 @@ class EditAdapter(private val itemList: MutableList<String>, private val itemCha
                     // Update the corresponding item in the itemList when text changes
                     val position = adapterPosition
                     itemList[position] = s.toString()
-                    Log.d("ViewHolder", "Position: $position, Updated Item: ${itemList[position]}")
                     itemChangeListener.onItemChanged(itemList)
                 }
             })

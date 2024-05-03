@@ -15,7 +15,7 @@ import com.example.decisionhelp.Data.itemResultCheck
 import com.example.decisionhelp.R
 
 class ItemAdapter : ListAdapter<VoterItem, ItemAdapter.VoterViewHolder>(VoterDiffCallback()) {
-    var number: Int = 2
+    var voterWhether: Int = 2
     var id: String = ""
     var voterResults: MutableList<VoterResult> = mutableListOf()
     var itemResultCheck: MutableList<itemResultCheck> = mutableListOf()
@@ -57,11 +57,11 @@ class ItemAdapter : ListAdapter<VoterItem, ItemAdapter.VoterViewHolder>(VoterDif
             checkBox.setOnClickListener {
                 if (isClickListenerEnabled) {
                     currentItem?.let { item ->
-                        if (number == 1) {
+                        if (voterWhether == 1) {
                             // Uncheck all items except the clicked one
                             currentList.forEach { it.isChecked = it == item }
                             notifyDataSetChanged()
-                        } else if (number == 0) {
+                        } else if (voterWhether == 0) {
                             // Toggle the checked state
                             item.isChecked = !item.isChecked
                         }

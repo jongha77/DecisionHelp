@@ -28,8 +28,8 @@ class VoterRepository(private val apiService: ApiService) {
 
     suspend fun voterCount(votercount: voterCountRequest) = apiService.voterCount(votercount)
 
-    suspend fun itemResultCheck(id: String): Response<List<itemResultCheck>> {
-        return apiService.itemResultCheck(id)
+    suspend fun itemResultCheck(id: String ,voterCode: String): Response<List<itemResultCheck>> {
+        return apiService.itemResultCheck(id,voterCode)
     }
 
     suspend fun voterClosed(voterclosed: voterClosedRequest) = apiService.voterClosed(voterclosed)
